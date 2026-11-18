@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>EduPath Sri Lanka</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      text-align: center;
+      padding: 30px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px auto;
+      border-radius: 12px;
+      max-width: 350px;
+      box-shadow: 0 3px 10px #ddd;
+    }
+    h1 { color: #2563eb; }
+  </style>
+</head>
+<body>
+  <h1>EduPath Sri Lanka</h1>
+  <p>Discover your engineering career path</p>
+
+  
+<div class="card"
+     onclick="exploreField('Computer Engineering')">
+
+    <h2>Computer Engineering</h2>
+    <p>Explore software, AI and cybersecurity.</p>
+  </div>
+
+  <div class="card"
+       onclick="exploreField('Electrical Engineering')">
+    <h2>Electrical Engineering</h2>
+    <p>Explore circuits, power and electronics.</p>
+  </div>
+
+  <div class="card"
+       onclick="exploreField('Mechanical Engineering')">
+    <h2>Mechanical Engineering</h2>
+    <p>Explore machines, materials and manufacturing.</p>
+  </div>
+
+<script>
+  function exploreField(field) {
+    alert("You selected: " + field);
+  }
+</script>
+
+<h2>Engineering Career Data from Backend</h2>
+
+<button onclick="loadCareers()">
+  Load Careers from API
+</button>
+
+<div id="career-results"></div>
+
+<script>
+  async function loadCareers() {
+    const results = document.getElementById(
+      "career-results"
+    );
+
+    results.textContent = "Loading...";
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/careers"
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          "HTTP error: " + response.status
+        );
+      }
+
+      const careers = await response.json();
+
+      results.innerHTML = "";
+
+      careers.forEach(career => {
+        const heading = document.createElement("h3");
+        heading.textContent = career.name;
+
+        const details = document.createElement("p");
+        details.textContent =
+          career.specializations.join(", ");
+
+        results.append(heading, details);
+      });
+
+    } catch (error) {
+      console.error(error);
+      results.textContent =
+        "Failed to load careers. Check the backend.";
+    }
+  }
+</script>
+
+
+</body>
+</html>

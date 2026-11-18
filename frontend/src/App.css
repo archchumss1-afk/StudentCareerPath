@@ -1,0 +1,127 @@
+.shell {
+  width: min(1120px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.hero {
+  color: #fff;
+  background-color: #10243a;
+  background-image:
+    linear-gradient(90deg, #10243a 10%, transparent),
+    repeating-linear-gradient(90deg, transparent 0 39px, #ffffff15 39px 40px),
+    repeating-linear-gradient(0deg, transparent 0 39px, #ffffff15 39px 40px);
+}
+
+.hero .shell {
+  padding-block: clamp(42px, 8vw, 92px);
+}
+
+.hero h1 {
+  max-width: 15ch;
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.065em;
+  overflow-wrap: anywhere;
+}
+
+.hero p {
+  margin-top: 18px;
+  color: #ffc08e;
+  font-weight: 600;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(24px, 5vw, 64px);
+  padding-block: 36px 64px;
+}
+
+.panel, .career-card {
+  background: #fff;
+  border: 1px solid #dce4eb;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 14px #10243a08;
+  overflow-wrap: anywhere;
+}
+
+.workspace h2 {
+  font-size: 1.5rem;
+  letter-spacing: -0.035em;
+  margin-bottom: 18px;
+}
+
+form, .field {
+  display: grid;
+  gap: 16px;
+}
+
+.field { gap: 6px; }
+.field label { font-weight: 650; }
+
+.field input {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #b4c1ce;
+  border-radius: 8px;
+  color: inherit;
+  background: #fcfdfe;
+}
+
+.field small, .list-message { color: #4e6072; }
+
+form button {
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: #a63d12;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+form button:hover:not(:disabled) { background: #85300e; }
+form button:disabled { opacity: 0.7; cursor: wait; }
+:focus-visible { outline: 3px solid #266ab5; outline-offset: 3px; }
+
+.feedback:not(:empty) {
+  margin-top: 14px;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.success { background: #e7f6ed; color: #18543c; }
+.error { background: #fcece7; color: #8a2719; }
+
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+  gap: 14px;
+}
+
+.career-card { border-top: 3px solid #a63d12; }
+.career-card h3 { font-size: 1.14rem; }
+
+.specializations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+}
+
+.specializations li {
+  background: #edf3f8;
+  color: #294662;
+  border-radius: 8px;
+  padding: 4px 9px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 670px) {
+  .workspace { grid-template-columns: 1fr; }
+}
